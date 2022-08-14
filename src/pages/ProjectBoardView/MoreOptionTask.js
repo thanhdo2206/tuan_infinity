@@ -64,7 +64,7 @@ export default function MoreOptionTask(props) {
 				aria-expanded={open ? 'true' : undefined}
 				className='btnOption'
 				onClick={handleOpenMore}
-				sx={{display:'flex'}}
+				sx={{ display: 'flex' }}
 			/>
 			<Menu
 				id='menuOption__task'
@@ -80,21 +80,30 @@ export default function MoreOptionTask(props) {
 					horizontal: 'left',
 				}}
 			>
-				<MenuItem className='menu__option-item' onClick={editNameTask}>
-					<CreateOutlinedIcon className='icon__option' />
+				<MenuItem
+					className='menu__option-item'
+					onClick={editNameTask}
+					sx={{ fontSize: '13px' }}
+				>
+					<CreateOutlinedIcon className='icon__option' sx={{fontSize:'16px',marginRight:'4px'}}/>
 					Edit task name
 				</MenuItem>
 
-				<MenuItem className='menu__option-item' onClick={openDetailTask}>
-					<VisibilityOutlinedIcon className='icon__option' />
+				<MenuItem
+					className='menu__option-item'
+					onClick={openDetailTask}
+					sx={{ fontSize: '13px' }}
+				>
+					<VisibilityOutlinedIcon className='icon__option' sx={{fontSize:'16px',marginRight:'4px'}}/>
 					View details
 				</MenuItem>
 
 				<MenuItem
 					className='menu__option-item delete__section-task'
 					onClick={toggleModalConfirm}
+					sx={{ fontSize: '13px' }}
 				>
-					<Inventory2OutlinedIcon className='icon__option' />
+					<Inventory2OutlinedIcon className='icon__option' sx={{fontSize:'16px',marginRight:'4px'}}/>
 					Archive task
 				</MenuItem>
 			</Menu>

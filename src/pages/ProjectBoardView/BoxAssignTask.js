@@ -61,7 +61,10 @@ export default function BoxAssignTask(props) {
 					sx={{ marginRight: '8px', display: 'flex' }}
 				>
 					{!username ? (
-						<PersonOutlineOutlinedIcon className='icon__assign__date' />
+						<PersonOutlineOutlinedIcon
+							className='icon__assign__date'
+							sx={{ '&': { fontSize: '18px' } }}
+						/>
 					) : (
 						<AvatarAssignee assignee={username} />
 					)}

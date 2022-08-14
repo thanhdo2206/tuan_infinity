@@ -80,6 +80,7 @@ export default function MoreOptionSection(props) {
 					aria-controls={open ? 'menuOption__section' : undefined}
 					aria-haspopup='true'
 					aria-expanded={open ? 'true' : undefined}
+					sx={{display: 'flex'}}
 				/>
 			</TooltipCustomize>
 
@@ -89,34 +90,53 @@ export default function MoreOptionSection(props) {
 				open={open}
 				onClose={handleCloseMore}
 			>
-				<MenuItem className='menu__option-item' onClick={renameTitleSection}>
-					<CreateOutlinedIcon className='icon__option' />
+				<MenuItem
+					className='menu__option-item'
+					sx={{ fontSize: '13px' }}
+					onClick={renameTitleSection}
+				>
+					<CreateOutlinedIcon
+						className='icon__option'
+						sx={{ fontSize: '16px', marginRight: '4px' }}
+					/>
 					Rename Section
 				</MenuItem>
 
 				<MenuItem
 					className='menu__option-item'
+					sx={{ fontSize: '13px' }}
 					onClick={() => {
 						addFormSectionRightLeft(true);
 					}}
 				>
-					<ArrowBackOutlinedIcon className='icon__option' />
+					<ArrowBackOutlinedIcon
+						className='icon__option'
+						sx={{ fontSize: '16px', marginRight: '4px' }}
+					/>
 					Add section to left
 				</MenuItem>
 				<MenuItem
 					className='menu__option-item'
+					sx={{ fontSize: '13px' }}
 					onClick={() => {
 						addFormSectionRightLeft(false);
 					}}
 				>
-					<ArrowForwardOutlinedIcon className='icon__option' />
+					<ArrowForwardOutlinedIcon
+						className='icon__option'
+						sx={{ fontSize: '16px', marginRight: '4px' }}
+					/>
 					Add section to right
 				</MenuItem>
 				<MenuItem
+					sx={{ fontSize: '13px' }}
 					className='menu__option-item delete__section-task'
 					onClick={toggleModal}
 				>
-					<Inventory2OutlinedIcon className='icon__option' />
+					<Inventory2OutlinedIcon
+						className='icon__option'
+						sx={{ fontSize: '16px', marginRight: '4px' }}
+					/>
 					Archive Section
 				</MenuItem>
 			</Menu>

@@ -190,20 +190,20 @@ body::-webkit-scrollbar {
 	border-radius: 5px;
 }
 
-.menu__option-item.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+/* .menu__option-item.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
 	font-size: 13px;
-}
+} */
 
 .menu__option-item.delete__section-task {
 	color: var(--color-danger-text);
 }
 
-.icon__option.css-i4bv87-MuiSvgIcon-root {
+/* .icon__option.css-i4bv87-MuiSvgIcon-root {
 	font-size: 16px;
 	margin-right: 4px;
-	/* stroke: black; */
+	stroke: black;
 	-webkit-text-stroke: 1px white;
-}
+} */
 
 /* task */
 
@@ -347,10 +347,10 @@ body::-webkit-scrollbar {
 	color: var(--color-text);
 }
 
-.icon__assign__date.css-i4bv87-MuiSvgIcon-root {
+/* .icon__assign__date.css-i4bv87-MuiSvgIcon-root {
 	font-size: 18px;
 	
-}
+} */
 
 .btnOption__box {
 	border-radius: 8px;

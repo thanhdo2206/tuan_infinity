@@ -42,7 +42,10 @@ export default function BoxDueDate(props) {
 								{showDate(startDate, dueDate)}
 							</Typography>
 						) : (
-							<CalendarTodayOutlinedIcon className='icon__assign__date' />
+							<CalendarTodayOutlinedIcon
+								className='icon__assign__date'
+								sx={{ '&': { fontSize: '18px' } }}
+							/>
 						)}
 					</Box>
 				</TooltipCustomize>
