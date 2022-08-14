@@ -10,6 +10,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { useNavigate } from 'react-router-dom';
 import { registerService } from '../../services/registerService';
 import ImageListItem from '@mui/material/ImageListItem';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
 
 const EMAIL_REGEX =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -49,14 +50,18 @@ export default function SignUp() {
 		setShowPassword(!showPassword);
 	};
 
-	const handleSubmit = event => {
+	const handleSubmit = async event => {
 		event.preventDefault();
 
 		let indexError = Object.values(state.errors).findIndex(error => error !== '');
 
 		if (indexError === -1) {
 			let values = { ...state.values };
-			registerApi(values);
+			ProgressListener.emit('start');
+
+			await registerApi(values);
+
+			ProgressListener.emit('stop');
 		}
 
 		return false;

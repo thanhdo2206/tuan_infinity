@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { assignTaskApi } from '../../redux/actions/TaskAction';
 import { convertDateFromDataBase } from '../../utils/date';
 import Popover from '@mui/material/Popover';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
 
 export default function BoxAssignTask(props) {
 	const { task } = props;
@@ -24,14 +25,17 @@ export default function BoxAssignTask(props) {
 	const membersWorkspace =
 		currentWorkSpace && currentWorkSpace.members ? currentWorkSpace.members : [];
 
-	const handleAssigneeMember =async member => {
+	const handleAssigneeMember = async member => {
 		const taskUpdate = {
 			...task,
 			assigneTo: { ...task.assigneTo, email: member.email },
 		};
 
-		
+		ProgressListener.emit('start');
+
 		await dispatch(assignTaskApi(taskUpdate));
+		ProgressListener.emit('stop');
+
 		handleClosePopover();
 	};
 
@@ -82,7 +86,6 @@ export default function BoxAssignTask(props) {
 					<AssigneeForm
 						memberArr={membersWorkspace}
 						onClickAssignee={handleAssigneeMember}
-						
 					/>
 				</Box>
 			</Popover>

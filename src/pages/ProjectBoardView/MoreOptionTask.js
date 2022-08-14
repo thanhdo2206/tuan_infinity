@@ -11,12 +11,10 @@ import ConfirmModal from '../../components/Modal/ConfirmModal';
 import { MODAL_ACTION_CONFIRM } from '../../constants/constants';
 import { archiveTaskApi } from '../../redux/actions/TaskAction';
 import { useSelector, useDispatch } from 'react-redux';
-
-
-
+import { ProgressListener } from '../../components/ProgressTest/Progress';
 
 export default function MoreOptionTask(props) {
-	const { renameTask, toggleDrawer,task } = props;
+	const { renameTask, toggleDrawer, task } = props;
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 
@@ -35,12 +33,10 @@ export default function MoreOptionTask(props) {
 		renameTask();
 	};
 
-	const openDetailTask = ()=>{
+	const openDetailTask = () => {
 		toggleDrawer();
 		handleCloseMore();
-
-
-	}
+	};
 
 	const [isShowModalArchive, setShowModalArchive] = useState(false);
 
@@ -49,22 +45,26 @@ export default function MoreOptionTask(props) {
 		setShowModalArchive(!isShowModalArchive);
 	};
 
-	const onModalArchiveTask = type => {
+	const onModalArchiveTask = async type => {
 		if (type === MODAL_ACTION_CONFIRM) {
-			dispatch(archiveTaskApi(task));
+			ProgressListener.emit('start');
+
+			await dispatch(archiveTaskApi(task));
+			ProgressListener.emit('stop');
 		}
 
 		toggleModalConfirm();
 	};
 
 	return (
-		<Box className='btnOption__box' >
+		<Box className='btnOption__box'>
 			<MoreHorizIcon
 				aria-controls={open ? 'menuOption__task' : undefined}
 				aria-haspopup='true'
 				aria-expanded={open ? 'true' : undefined}
 				className='btnOption'
 				onClick={handleOpenMore}
+				sx={{display:'flex'}}
 			/>
 			<Menu
 				id='menuOption__task'
@@ -90,7 +90,10 @@ export default function MoreOptionTask(props) {
 					View details
 				</MenuItem>
 
-				<MenuItem className='menu__option-item delete__section-task' onClick={toggleModalConfirm}>
+				<MenuItem
+					className='menu__option-item delete__section-task'
+					onClick={toggleModalConfirm}
+				>
 					<Inventory2OutlinedIcon className='icon__option' />
 					Archive task
 				</MenuItem>
@@ -101,8 +104,7 @@ export default function MoreOptionTask(props) {
 				title='Archive this task'
 				content={
 					<span>
-						Are you sure you want to archive this task <b>{task.taskName}</b>
-						?
+						Are you sure you want to archive this task <b>{task.taskName}</b>?
 					</span>
 				}
 				onAction={onModalArchiveTask}

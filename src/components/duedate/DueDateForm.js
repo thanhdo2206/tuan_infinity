@@ -83,7 +83,7 @@ export default function DueDateForm(props) {
 						readOnly: true,
 					}}
 					inputRef={input => {
-						if (isFocusDueDate) {
+						if (!isFocusDueDate) {
 							return input && input.focus();
 						}
 						return '';
@@ -98,7 +98,7 @@ export default function DueDateForm(props) {
 						readOnly: true,
 					}}
 					inputRef={input => {
-						if (!isFocusDueDate) {
+						if (isFocusDueDate) {
 							return input && input.focus();
 						}
 						return '';

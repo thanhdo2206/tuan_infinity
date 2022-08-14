@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { TooltipCustomize } from '../../components/ToolTip/ToolTip';
 import { updateTitleSectionApi } from '../../redux/actions/SectionAction';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
+
 
 export default function BoardHeader(props) {
 	const {
@@ -26,7 +28,7 @@ export default function BoardHeader(props) {
 		setTitleSection(value);
 	};
 
-	const editTitleSection = () => {
+	const editTitleSection = async () => {
 		const titleSectionEdit = !titleSection.trim()
 			? 'Untitled section'
 			: titleSection;
@@ -37,8 +39,12 @@ export default function BoardHeader(props) {
 		};
 		
 
+		ProgressListener.emit('start');
 
-		dispatch(updateTitleSectionApi(dataSection));
+		await dispatch(updateTitleSectionApi(dataSection));
+		
+		ProgressListener.emit('stop');
+
 	};
 
 	const renameSection = () => {

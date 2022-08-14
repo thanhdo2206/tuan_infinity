@@ -35,7 +35,10 @@ export default function BoxDueDate(props) {
 				<TooltipCustomize title='Add due date' placement='bottom'>
 					<Box sx={{ display: 'flex' }}>
 						{valueStartDate || valueDueDate ? (
-							<Typography className='dueDate__value'>
+							<Typography
+								className='dueDate__value'
+								sx={{ fontSize: '12px', color: '#6d6e6f' }}
+							>
 								{showDate(startDate, dueDate)}
 							</Typography>
 						) : (

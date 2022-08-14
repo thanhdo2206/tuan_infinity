@@ -9,6 +9,7 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import ConfirmModal from '../../components/Modal/ConfirmModal';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
 
 import {
 	MODAL_ACTION_CLOSE,
@@ -18,8 +19,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { archiveSectionApi } from '../../redux/actions/SectionAction';
 
 export default function MoreOptionSection(props) {
-	const { section, renameSection, setAddFormSectionLeft, setAddFormSectionRight } =
-		props;
+	const {
+		section,
+		renameSection,
+		setAddFormSectionLeft,
+		setAddFormSectionRight,
+	} = props;
 	const dispatch = useDispatch();
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -40,9 +45,12 @@ export default function MoreOptionSection(props) {
 		setShowModalArchive(!isShowModalArchive);
 	};
 
-	const onModalArchiveSection = type => {
+	const onModalArchiveSection = async type => {
 		if (type === MODAL_ACTION_CONFIRM) {
-			dispatch(archiveSectionApi(section._id));
+			ProgressListener.emit('start');
+
+			await dispatch(archiveSectionApi(section._id));
+			ProgressListener.emit('stop');
 		}
 
 		toggleModal();

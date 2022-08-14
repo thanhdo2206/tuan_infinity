@@ -180,9 +180,9 @@ body::-webkit-scrollbar {
 	padding: 2px;
 }
 
-.btnOption.css-i4bv87-MuiSvgIcon-root {
+/* .btnOption.css-i4bv87-MuiSvgIcon-root {
 	display: flex;
-}
+} */
 
 .btnOption:hover {
 	color: #000000;
@@ -248,12 +248,12 @@ body::-webkit-scrollbar {
 	cursor: pointer;
 }
 
-.task__item.css-1p823my-MuiListItem-root {
+/* .task__item.css-1p823my-MuiListItem-root {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: initial;
 	padding: 12px 16px;
-}
+} */
 
 .task__item.task__newItem,
 .task__item:hover {
@@ -299,10 +299,10 @@ body::-webkit-scrollbar {
 	display: flex;
 }
 
-.icon__checkCircle.css-i4bv87-MuiSvgIcon-root {
+/* .icon__checkCircle.css-i4bv87-MuiSvgIcon-root {
 	font-size: 18px;
 	margin-right: 10px;
-}
+} */
 
 .icon__complete,
 .icon__incomplete:hover {
@@ -381,7 +381,7 @@ body::-webkit-scrollbar {
 	cursor: pointer;
 }
 
-.dueDate__value.css-ahj2mt-MuiTypography-root {
+/* .dueDate__value.css-ahj2mt-MuiTypography-root {
 	font-size: 12px;
 	color: var(--color-text-weak);
-}
+} */

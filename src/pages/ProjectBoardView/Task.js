@@ -14,6 +14,7 @@ import {
 } from '../../redux/actions/TaskAction';
 import Drawer from '@mui/material/Drawer';
 import TaskDetail from '../ProjectListPage/TaskDetail/TaskDetail';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
 
 export default function Task(props) {
 	const { task } = props;
@@ -48,7 +49,11 @@ export default function Task(props) {
 	const editTaskName = async () => {
 		const nameTaskEdit = !nameTask.trim() ? 'Untitled task' : nameTask;
 
+		ProgressListener.emit('start');
+
 		await dispatch(updateTitleTaskApi(task._id, nameTaskEdit));
+		ProgressListener.emit('stop');
+
 		setIsDisplaySpanTaskname(true);
 	};
 
@@ -71,7 +76,16 @@ export default function Task(props) {
 
 	return (
 		<>
-			<ListItem className='task__item' ref={listItemRef}>
+			<ListItem
+				className='task__item'
+				sx={{
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					alignItems: 'initial',
+					padding: '12px 16px',
+				}}
+				ref={listItemRef}
+			>
 				<Box className='board__card-title'>
 					<Box className='board__card-title--form'>
 						<CompleteTask task={task} />
@@ -93,7 +107,11 @@ export default function Task(props) {
 						)}
 					</Box>
 
-					<MoreOptionTask renameTask={renameTask} task={task} toggleDrawer={toggleDrawer} />
+					<MoreOptionTask
+						renameTask={renameTask}
+						task={task}
+						toggleDrawer={toggleDrawer}
+					/>
 				</Box>
 
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>

@@ -57,11 +57,11 @@ export const updateDropTask = (sectionDropId, newTaskOrder, taskDrop) => {
 	return action;
 };
 
-export const updateSectionIdTaskDragApi = (taskDrag,sectionDropId) => {
+export const updateSectionIdTaskDragApi = (taskDrag, sectionDropId) => {
 	return async dispatch => {
-		const taskDrop = {...taskDrag,sectionId:sectionDropId};
+		const taskDrop = { ...taskDrag, sectionId: sectionDropId };
 		const { data } = await updateTaskService(taskDrop);
-		// console.log(result);
+
 		// dispatch(getAllTaskInProjectApi(data.projectId));
 	};
 };
@@ -70,8 +70,8 @@ export const updateTaskOrderInSectionApi = (newTaskOrder, sectionId) => {
 	const data = { newTaskOrder, sectionId };
 	return async dispatch => {
 		const result = await updateTaskOrderInSectionService(data);
-		// console.log(result);
-		dispatch(getAllSectionApi(result.data.projectId))
+
+		dispatch(getAllSectionApi(result.data.projectId));
 	};
 };
 
@@ -94,10 +94,7 @@ export const completeTaskApi = taskId => {
 
 export const assignTaskApi = taskUpdate => {
 	return async dispatch => {
-		// console.log('taskUpdate trong action', taskUpdate);
-
 		const { data } = await updateTaskService(taskUpdate);
-		console.log('taskUpdate sau khi goi api', data);
 
 		dispatch(getAllTaskInProjectApi(data.projectId));
 	};
@@ -111,26 +108,19 @@ export const setDateTaskApi = taskUpdate => {
 	};
 };
 
-export const createTaskApi = (
-	taskCreate,
-	taskOrderInSection,
-	isAddTask
-) => {
+export const createTaskApi = (taskCreate, taskOrderInSection, isAddTask) => {
 	return async dispatch => {
 		const { data } = await createTaskService(taskCreate);
 		const newTaskOrderInSection = taskOrderInSection;
-		// console.log('section id', data.sectionId)
-		// console.log('task order before', newTaskOrderInSection)
-		// console.log('isAddTask', isAddTask)
+
 		isAddTask === 1
 			? newTaskOrderInSection.push(data._id)
-			: newTaskOrderInSection.splice(0,0,data._id);
-		// console.log('new task order', newTaskOrderInSection)
+			: newTaskOrderInSection.splice(0, 0, data._id);
+
 		dispatch(updateTaskOrderInSectionApi(newTaskOrderInSection, data.sectionId));
 		dispatch(getAllTaskInProjectApi(data.projectId));
 	};
 };
-
 
 export const updatePriorityTaskApi = taskUpdate => {
 	return async dispatch => {
@@ -147,6 +137,3 @@ export const archiveTaskApi = task => {
 		dispatch(getAllTaskInProjectApi(result.data.projectId));
 	};
 };
-
-
-

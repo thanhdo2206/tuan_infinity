@@ -16,6 +16,7 @@ import {
 	updateTaskOrderInSectionApi,
 } from '../../redux/actions/TaskAction';
 import { filterTaskList } from '../ProjectListPage/projectSection/ProjectSection';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
 
 export default function ListTask(props) {
 	const {
@@ -55,12 +56,14 @@ export default function ListTask(props) {
 			? mapOrder(arrTaskInSection, taskOrderInSection.taskOrder, '_id')
 			: [];
 
-	const listTaskUnarchive = listTask && listTask.length ? listTask.filter(task => !task.archivedTask) :[];
-
+	const listTaskUnarchive =
+		listTask && listTask.length
+			? listTask.filter(task => !task.archivedTask)
+			: [];
 
 	const newTaskList = filterTaskList(listTaskUnarchive, filterSelector);
 
-	const handleCreateTask = nameTask => {
+	const handleCreateTask = async nameTask => {
 		if (nameTask === '') {
 			closeNewTaskForm();
 			return;
@@ -74,7 +77,12 @@ export default function ListTask(props) {
 		};
 
 		closeNewTaskForm();
-		dispatch(createTaskApi(taskCreate, taskOrderInSection.taskOrder, isAddTask));
+		ProgressListener.emit('start');
+
+		await dispatch(
+			createTaskApi(taskCreate, taskOrderInSection.taskOrder, isAddTask)
+		);
+		ProgressListener.emit('stop');
 	};
 
 	const onTaskDrop = async (dropResult, section) => {

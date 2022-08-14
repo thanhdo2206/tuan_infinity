@@ -6,8 +6,8 @@ export default function VerifyEmail() {
 		<div className='container'>
 			<div className='container__verify'>
 				<img
-					style={{ marginBottom: '40px', width: '124px' }}
-					src='./img/logoAsana.png'
+					style={{ marginBottom: '40px', width: '234px' }}
+					src='./img/logoInfinity.png'
 					alt='Logo'
 				/>
 				

@@ -19,10 +19,12 @@ import { deleteSectionAction } from '../../../redux/actions/ProjectAction';
 import ConfirmModal from '../../../components/Modal/ConfirmModal';
 import {
 	archiveSectionApi,
+	unArchiveSectionApi,
 	updateTitleSectionApi,
 } from '../../../redux/actions/SectionAction';
 import ButtonProjectList from '../../../components/ButtonProjectList/ButtonProjectList';
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined';
+import { ProgressListener } from '../../../components/ProgressTest/Progress';
 
 const styles = {
 	textTitle: {
@@ -60,25 +62,28 @@ export default function ProjectSectionForm(props) {
 	} = props;
 
 	const [isShowMenuSection, setIsShowMenuSection] = useState(false);
-	const [isShowModalDelete, setShowModalDelete] = useState(false);
+	const [isShowModalUnarchiveSection, setShowModalUnarchiveSection] =
+		useState(false);
 
 	const dispatch = useDispatch();
 	const searchInput = useRef(null);
 
 	const toggleModal = () => {
-		setShowModalDelete(!isShowModalDelete);
+		setShowModalUnarchiveSection(!isShowModalUnarchiveSection);
 	};
 
 	const handleShowMenuSection = () => {
 		setIsShowMenuSection(!isShowMenuSection);
 	};
 
-	const handleModalArchiveSection = type => {
+	const handleModalUnArchiveSection = async type => {
 		if (type === MODAL_ACTION_CONFIRM) {
-			dispatch(archiveSectionApi(sectionId));
+			ProgressListener.emit('start');
+			await dispatch(unArchiveSectionApi(sectionId));
+			ProgressListener.emit('stop');
 		}
 		setIsShowMenuSection(false);
-		setShowModalDelete(false);
+		setShowModalUnarchiveSection(false);
 	};
 
 	const handleEditTitleSection = e => {
@@ -209,14 +214,14 @@ export default function ProjectSectionForm(props) {
 						onClickButton={toggleModal}
 					/>
 					<ConfirmModal
-						show={isShowModalDelete}
+						show={isShowModalUnarchiveSection}
 						title='Unarchive this section'
 						content={
 							<span>
 								Are you sure you want to unarchive this section <b>{sectionName}</b>?
 							</span>
 						}
-						onAction={handleModalArchiveSection}
+						onAction={handleModalUnArchiveSection}
 						nameBtnConfirm='Unarchive section'
 					/>
 				</Box>

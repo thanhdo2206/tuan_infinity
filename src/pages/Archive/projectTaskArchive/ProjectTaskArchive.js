@@ -16,6 +16,8 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { TooltipCustomize } from '../../../components/ToolTip/ToolTip';
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined';
 import { archiveTaskApi } from '../../../redux/actions/TaskAction';
+import { ProgressListener } from '../../../components/ProgressTest/Progress';
+
 
 const styles = {
 	task: {
@@ -57,8 +59,12 @@ export default function ProjectTaskArchive() {
 		}
 	}
 
-	const unarchiveTask = task => {
-		dispatch(archiveTaskApi(task));
+	const unarchiveTask =async task => {
+		ProgressListener.emit('start');
+
+		await dispatch(archiveTaskApi(task));
+		ProgressListener.emit('stop');
+
 	};
 
 	const render = () => {
@@ -78,9 +84,8 @@ export default function ProjectTaskArchive() {
 				const valueStartDate = startDate !== null ? startDate : '';
 				const valueDueDate = dueDate !== null ? dueDate : '';
 				return (
-					<Box>
+					<Box key={_id}>
 						<Grid
-							key={_id}
 							container
 							className='taskName__container'
 							sx={{ marginLeft: '20px' }}
@@ -172,7 +177,7 @@ export default function ProjectTaskArchive() {
 								align='right'
 								style={styles.task}
 								className='dueDate__calendar'
-								sx={{display: 'flex', alignItems: 'center'}}
+								sx={{ display: 'flex', alignItems: 'center' }}
 							>
 								{valueStartDate || valueDueDate ? (
 									<Typography className='dueDate__typography--show'>

@@ -8,6 +8,8 @@ import {
 	addSectionApi,
 	addSectionLeftRightApi,
 } from '../../redux/actions/SectionAction';
+import { ProgressListener } from '../../components/ProgressTest/Progress';
+
 
 export default function Section(props) {
 	const { section, indexSection } = props;
@@ -44,7 +46,7 @@ export default function Section(props) {
 		setLeftRight(1);
 	};
 
-	const handleAddSectionLeftRight = sectionNameInput => {
+	const handleAddSectionLeftRight =async sectionNameInput => {
 		const newSection = {
 			sectionName: sectionNameInput,
 			taskOrder: [],
@@ -52,8 +54,11 @@ export default function Section(props) {
 		};
 
 		let indexAddSection = indexSection + checkLeftRight;
+		ProgressListener.emit('start');
 
-		dispatch(addSectionLeftRightApi(newSection, sectionOrder, indexAddSection));
+		await dispatch(addSectionLeftRightApi(newSection, sectionOrder, indexAddSection));
+		ProgressListener.emit('stop');
+
 	};
 
 	const addSectionRightLeft = (event, nameSection) => {

@@ -56,4 +56,18 @@ export const archiveSectionService = async sectionId =>{
 	}
 }
 
+export const UnarchiveSectionService = async sectionId =>{
+	try {
+		const respone = await axiosInstance({
+			method: 'put',
+			url: 'section/4',
+			data : {sectionId:sectionId}
+		});
+		return respone;
+	} catch (error) {
+		console.log(error.response);
+		// return error.response;
+	}
+}
+
 
