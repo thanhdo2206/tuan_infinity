@@ -11,6 +11,7 @@ import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import UnarchiveOutlinedIcon from '@mui/icons-material/UnarchiveOutlined';
 import ConfirmModal from '../../../components/Modal/ConfirmModal';
+import { ProgressListener } from '../../../components/ProgressTest/Progress';
 
 import {
 	MODAL_ACTION_CLOSE,
@@ -51,7 +52,10 @@ export default function ButtonMore(props) {
 	};
 
 	const handleArchive = async (status, projectId) => {
+		ProgressListener.emit('start');
+
 		await dispatch(archiveUnarchiveProjectApi(status, projectId));
+		ProgressListener.emit('stop');
 	};
 
 	const [isShowModalEditProject, setShowModalEditProject] = useState(false);
@@ -68,13 +72,16 @@ export default function ButtonMore(props) {
 		setNameEditProject(value);
 	};
 
-	const editNameProject = type => {
+	const editNameProject = async type => {
 		if (type === MODAL_ACTION_CONFIRM) {
 			const projectUpdate = {
 				...project,
 				projectName: nameEditProject,
 			};
-			dispatch(updateTitleProjectApi(projectUpdate));
+			ProgressListener.emit('start');
+
+			await dispatch(updateTitleProjectApi(projectUpdate));
+			ProgressListener.emit('stop');
 		}
 
 		toggleModalEditProject();

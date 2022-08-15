@@ -69,12 +69,15 @@ export default function ArchiveProjects() {
 								<Box sx={styles.boxProjectContainer}>
 									<WorkIcon sx={{ fontSize: '16px', marginRight: '10px' }} />
 
-									<ListItemText
+									{/* <ListItemText
 										sx={{
 											'& .css-10hburv-MuiTypography-root': { fontSize: '12px' },
 										}}
 										primary={project.projectName}
-									/>
+									/> */}
+									<span style={{ flex: '1', fontSize: '13px', marginTop: '3px' }}>
+										{project.projectName}
+									</span>
 
 									<ButtonMore project={project} />
 

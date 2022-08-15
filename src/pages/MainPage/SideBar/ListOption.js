@@ -20,11 +20,7 @@ const styles = {
 		color: '#a2a0a2',
 		fontSize: '20px',
 	},
-	listItem:{
-		'& .css-10hburv-MuiTypography-root': {
-			fontSize: '14px',
-		}
-	}
+	
 };
 
 export default function ListOption() {
@@ -38,22 +34,30 @@ export default function ListOption() {
 			href: `/main-page/home/${currentWorkSpace._id}`,
 			tagIcon: <HomeOutlinedIcon sx={styles.iconButton} />,
 		},
-		{
-			title: 'Reporting',
-			href: '/main-page/reporting',
-			tagIcon: <OutlinedFlagIcon sx={styles.iconButton} />,
-		},
 	];
 
 	return (
 		<List>
 			{arrListOption.map((item, index) => {
 				return (
-					<ListItem className="listItem__hover" sx={styles.listItem} key={item.title} disablePadding>
-						<NavLink className='nav__link--sidebar' to={item.href} style={styles.navLink}>
+					<ListItem
+						className='listItem__hover'
+						sx={{
+							'& .css-10hburv-MuiTypography-root': {
+								fontSize: '14px',
+							},
+						}}
+						key={item.title}
+						disablePadding
+					>
+						<NavLink
+							className='nav__link--sidebar'
+							to={item.href}
+							style={styles.navLink}
+						>
 							<ListItemButton>
 								<ListItemIcon sx={{ minWidth: '28px' }}>{item.tagIcon}</ListItemIcon>
-								<ListItemText  primary={item.title} />
+								<ListItemText primary={item.title} />
 							</ListItemButton>
 						</NavLink>
 					</ListItem>
