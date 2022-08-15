@@ -46,14 +46,16 @@ const styles = {
 		padding: '10px',
 	},
 	headerTable: {
-		position: 'fixed',
-		top: '120px',
+		// position: 'fixed',
+		// top: '120px',
 		// right: '0',
 		zIndex: '5',
 		background: '#fff',
 	},
 	bodyTable: {
-		marginTop: '150px',
+		position: 'relative',
+		marginTop: '78px',
+		zIndex: '0'
 	},
 };
 export default function ProjectTable() {
@@ -147,8 +149,8 @@ export default function ProjectTable() {
 
 	return (
 		<Box sx={{ mt: 2 }}>
-			<Box>
-				<Grid container style={styles.headerTable} drawerWidth='240px'>
+			<Box sx={{ zIndex: '300000', position: 'sticky', top: '120px' }}>
+				<Grid container style={styles.headerTable} >
 					<Grid item xs={4} style={styles.headerTitleTable}>
 						Task name
 					</Grid>
