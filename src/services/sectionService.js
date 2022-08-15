@@ -1,9 +1,8 @@
-import axiosInstance from '../utils/axiosInstance';
-
+import requestApi from '../utils/requestApi'
 
 export const getAllSectionService = async projectId => {
 	try {
-		const respone = await axiosInstance({
+		const respone = await requestApi({
 			method: 'get',
 			url: `section/${projectId}`,
 		});
@@ -16,7 +15,7 @@ export const getAllSectionService = async projectId => {
 
 export const addSectionService = async newSection => {
 	try {
-		const respone = await axiosInstance({
+		const respone = await requestApi({
 			method: 'post',
 			url: 'section',
 			data : {...newSection}
@@ -30,7 +29,7 @@ export const addSectionService = async newSection => {
 
 export const updateTitleSectionService = async dataSection =>{
 	try {
-		const respone = await axiosInstance({
+		const respone = await requestApi({
 			method: 'patch',
 			url: 'section/3',
 			data : {...dataSection}
@@ -44,7 +43,7 @@ export const updateTitleSectionService = async dataSection =>{
 
 export const archiveSectionService = async sectionId =>{
 	try {
-		const respone = await axiosInstance({
+		const respone = await requestApi({
 			method: 'put',
 			url: 'section/2',
 			data : {sectionId:sectionId}
@@ -58,7 +57,7 @@ export const archiveSectionService = async sectionId =>{
 
 export const UnarchiveSectionService = async sectionId =>{
 	try {
-		const respone = await axiosInstance({
+		const respone = await requestApi({
 			method: 'put',
 			url: 'section/4',
 			data : {sectionId:sectionId}

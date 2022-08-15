@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { registerService } from '../../services/registerService';
 import ImageListItem from '@mui/material/ImageListItem';
 import { ProgressListener } from '../../components/ProgressTest/Progress';
+import Link from '@mui/material/Link';
 
 const EMAIL_REGEX =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -225,6 +226,21 @@ export default function SignUp() {
 					Sign Up
 				</Button>
 			</form>
+			<Link
+				href='/login'
+				variant='body2'
+				sx={{
+					position: 'absolute',
+					right: '0px',
+					bottom: '-21px',
+					color: '#727272',
+					textDecoration: 'none',
+					float: 'right',
+					'&:hover': { textDecoration: 'underline' },
+				}}
+			>
+				{"Already have an account? Login Now!"}
+			</Link>
 		</Box>
 	);
 }

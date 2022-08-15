@@ -110,6 +110,7 @@ export const setDateTaskApi = taskUpdate => {
 
 export const createTaskApi = (taskCreate, taskOrderInSection, isAddTask) => {
 	return async dispatch => {
+		console.log(taskCreate);
 		const { data } = await createTaskService(taskCreate);
 		const newTaskOrderInSection = taskOrderInSection;
 
@@ -135,5 +136,13 @@ export const archiveTaskApi = task => {
 		const result = await archiveTaskService(task);
 
 		dispatch(getAllTaskInProjectApi(result.data.projectId));
+	};
+};
+
+export const updateDescriptionTaskApi = taskUpdate => {
+	return async dispatch => {
+		const { data } = await updateTaskService(taskUpdate);
+
+		dispatch(getAllTaskInProjectApi(data.projectId));
 	};
 };

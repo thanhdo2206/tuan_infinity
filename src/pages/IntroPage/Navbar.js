@@ -58,28 +58,7 @@ export default function Navbar() {
 					</div>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map(page => (
-							<Button
-								key={page}
-								sx={{
-									my: 2,
-									display: 'block',
-									textTransform: 'none',
-									padding: '10px 15px',
-									margin: '0',
-									textAlign: 'center',
-									color: '#727272',
-									fontWeight: 600,
-									'&:hover': {
-										color: '#333 !important',
-									},
-									fontFamily: 'inherit',
-									fontSize: '16px',
-								}}
-							>
-								{page}
-							</Button>
-						))}
+						
 					</Box>
 
 					<LinkRoute

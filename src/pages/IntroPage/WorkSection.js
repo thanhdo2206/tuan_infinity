@@ -37,7 +37,7 @@ export default function WorkContent() {
 							without the busywork.
 						</p>
 						<p className='work__content'>
-							From the small stuff to the big picture, Asana organizes work so teams
+							From the small stuff to the big picture, Infinity organizes work so teams
 							know what to do, why it matters, and how to get it done.
 						</p>
 						<Grid>

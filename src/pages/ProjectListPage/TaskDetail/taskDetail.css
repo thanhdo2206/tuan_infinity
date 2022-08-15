@@ -25,6 +25,31 @@
     background-color: #E0F4EC;
     border-color: #58A182;
 }
+#taskDetail__icon--archiveTask {
+    font-size: 14px;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+	border: 1px solid #a2a0a2;
+	font-size: 13px;
+	color: #1e1f21;
+	width: 90px;
+	height: 30px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    text-transform: capitalize;
+}
+
+#taskDetail__icon--archiveTask:hover {
+    color: #e83a00;
+    background-color: #ffeae3;
+    border-color: #e83a00;
+}
 
 #taskDetail__icon--Checked {
     font-size: 14px;

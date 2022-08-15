@@ -88,7 +88,7 @@ export default function ProjectTaskArchive() {
 						<Grid
 							container
 							className='taskName__container'
-							sx={{ marginLeft: '20px' }}
+							
 						>
 							{/* name task */}
 							<Grid

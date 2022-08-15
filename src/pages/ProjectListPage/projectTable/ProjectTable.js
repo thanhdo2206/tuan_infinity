@@ -149,7 +149,7 @@ export default function ProjectTable() {
 
 	return (
 		<Box sx={{ mt: 2 }}>
-			<Box sx={{ zIndex: '300000', position: 'sticky', top: '120px' }}>
+			<Box sx={{ zIndex: '5', position: 'sticky', top: '120px' }}>
 				<Grid container style={styles.headerTable} >
 					<Grid item xs={4} style={styles.headerTitleTable}>
 						Task name

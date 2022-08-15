@@ -109,7 +109,7 @@ export default function ProjectTask(props) {
 	};
 
 	return (
-		<Grid container className='taskName__container' sx={{marginLeft: '20px '}}>
+		<Grid container className='taskName__container' >
 			<Grid item xs={4} style={styles.task} className='taskName__block'>
 				<Box className='taskName__block--input'>
 					{/* <Box className='row-drag-handle'>

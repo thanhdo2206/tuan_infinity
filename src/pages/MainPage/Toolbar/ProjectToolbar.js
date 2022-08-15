@@ -34,7 +34,7 @@ export default function ProjectToolbar(props) {
 						className='nav__link-project line'
 						to={`/main-page/${currentProject._id}/listArchive`}
 					>
-						<span>List Archive</span>
+						<span>Archived Item</span>
 					</NavLink>
 				</li>
 			</ul>
