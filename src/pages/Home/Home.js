@@ -57,7 +57,7 @@ export default function Home() {
 		<Box sx={{ padding: '24px' }}>
 			<p style={styles.textDate}>{getDate()}</p>
 			<p style={styles.welcomeMessenger}>{`${getGreetingMessage()}, ${
-				currentUser.userName
+				currentUser.username ? currentUser.username : ''
 			}`}</p>
 			<Grid container spacing={4} mt={5}>
 				<Grid item xs={6}>
