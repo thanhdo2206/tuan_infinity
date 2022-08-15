@@ -11,7 +11,7 @@ import WorkIcon from '@mui/icons-material/Work';
 
 const styles = {
 	boxProjectContainer: {
-		padding: '2px 16px',
+		padding: '6px 16px',
 		display: 'flex',
 		alignItems: 'center',
 	},
